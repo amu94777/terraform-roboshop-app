@@ -77,12 +77,12 @@ resource "null_resource" "component_delete" {
     instance_id = module.component.id
   }
 
-  provisioner "local-exec" {
-    # Bootstrap script called with private_ip of each node in the cluster
-    command = "aws ec2 terminate-instances --instance-ids ${module.component.id}"
-  }
+  # provisioner "local-exec" {
+  #   # Bootstrap script called with private_ip of each node in the cluster
+  #   command = "aws ec2 terminate-instances --instance-ids ${module.component.id}"
+  # }
 
-  depends_on = [ aws_ami_from_instance.component]
+  # depends_on = [ aws_ami_from_instance.component]
 }
 
 resource "aws_launch_template" "component" {
